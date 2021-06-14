@@ -11,6 +11,7 @@ class ClientSerializer(serializers.ModelSerializer):
                                "created_by",
                            ),
         fields = (
+            "id",
             "name",
             "email",
             "org_number",
