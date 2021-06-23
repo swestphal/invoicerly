@@ -4,6 +4,7 @@ from .models import Invoice, Item
 
 
 class InvoiceSerializer(serializers.ModelSerializer):
+    client = serializers.StringRelatedField()
     class Meta:
         model = Invoice
         read_only_fields = (
@@ -30,6 +31,7 @@ class InvoiceSerializer(serializers.ModelSerializer):
             "invoice_type",
             "due_days",
             "is_sent",
+            "is_paid",
             "gross_amount",
             "vat_amount",
             "net_amount",

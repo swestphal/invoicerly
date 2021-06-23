@@ -28,6 +28,7 @@ class Invoice(models.Model):
     due_days = models.IntegerField(default=14)
     is_credit_for = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
     is_sent = models.BooleanField(default=False)
+    is_paid = models.BooleanField(default=False)
     gross_amount = models.DecimalField(max_digits=6, decimal_places=2)
     vat_amount = models.DecimalField(max_digits=6, decimal_places=2)
     net_amount = models.DecimalField(max_digits=6, decimal_places=2)
