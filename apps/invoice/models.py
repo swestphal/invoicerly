@@ -41,6 +41,8 @@ class Invoice(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ('-created_at',)
 
 class Item(models.Model):
     invoice = models.ForeignKey(Invoice, related_name='items', on_delete=models.CASCADE)

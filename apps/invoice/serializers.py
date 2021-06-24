@@ -8,15 +8,17 @@ class InvoiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Invoice
         read_only_fields = (
-            'team',
-            'created_at',
-            'created_by',
-            'modified_at',
-            'modified_by'
-        ),
+                               'team',
+                               'invoice_number',
+                               'created_at',
+                               'created_by',
+                               'modified_at',
+                               'modified_by'
+                           ),
         fields = (
             "id",
             "client",
+            'invoice_number',
             "client_name",
             "client_email",
             "client_org_number",
@@ -36,4 +38,20 @@ class InvoiceSerializer(serializers.ModelSerializer):
             "vat_amount",
             "net_amount",
             "discount_amount",
+        )
+
+class ItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Item
+        read_only_fields = (
+            "invoice",
+        )
+        fields = (
+            "id",
+            "title",
+            "quantity",
+            "unit_price",
+            "net_amount",
+            "vat_rate",
+            "discount"
         )
