@@ -15,9 +15,10 @@ class InvoiceViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         team = self.request.user.teams.first()
         invoice_number = team.first_invoice_number
-        team.first_invoice_number = invoice_number+1
+        team.first_invoice_number = invoice_number + 1
         team.save()
-        serializer.save(created_by=self.request.user, team=team,modified_by=self.request.user, invoice_number=invoice_number)
+        serializer.save(created_by=self.request.user, team=team, modified_by=self.request.user,
+                        invoice_number=invoice_number, bank_account=team.bank_account)
 
     def perform_update(self, serializer):
         obj = self.get_object()
@@ -26,6 +27,3 @@ class InvoiceViewSet(viewsets.ModelViewSet):
             raise PermissionDenied('Wrong object owner')
 
         serializer.save()
-
-
-

@@ -35,6 +35,7 @@ class Invoice(models.Model):
     discount_amount = models.DecimalField(max_digits=6, decimal_places=2)
     team = models.ForeignKey(Team, related_name='invoices', on_delete=models.CASCADE)
     client = models.ForeignKey(Client, related_name='invoices', on_delete=models.CASCADE)
+    bank_account = models.CharField(max_length=256, blank=True, null=True)
 
     created_by = models.ForeignKey(User, related_name='created_invoices', on_delete=models.CASCADE)
     modified_by = models.ForeignKey(User, related_name='modified_invoices', on_delete=models.CASCADE)
